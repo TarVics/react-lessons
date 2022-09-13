@@ -1,0 +1,48 @@
+.characters {
+    width: 90%;
+    min-width: 400px;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    /*border: 1px dotted black;*/
+    font-family: "Droid Serif", sans-serif;
+    font-size: 12px;
+}
+
+.character {
+    /*width: calc(50% - 25px);*/
+    width: 500px;
+    margin: 10px;
+    border: 1px solid gray;
+    box-shadow: 0 0 5px rgba(26, 9, 9, 0.4);
+    display: flex;
+}
+
+.character-name {
+    text-align: center;
+}
+
+.character-age {
+    text-align: center;
+    font-style: italic;
+}
+
+.character-info {
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: justify;
+    text-indent: 1.5rem;
+}
+
+.character-photo {
+    display: block;
+    width: 150px;
+    margin: 20px;
+}
+
+.character-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
