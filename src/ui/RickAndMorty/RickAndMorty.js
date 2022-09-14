@@ -1,5 +1,5 @@
-import Character from "./Character";
 import {useEffect, useState} from "react";
+import Character from "./Character";
 
 function RickAndMorty() {
     const [users, setUsers] = useState([]);
