@@ -1,6 +1,7 @@
 import Status from './Status';
 import Section from './Section';
 import ImgWrapper from './ImgWrapper';
+import SectionInfo from "./SectionInfo";
 
 function Character(props) {
     const {id, name, status, species, gender, image} = props.info;
@@ -14,12 +15,10 @@ function Character(props) {
                     <Status value={status}/>
                 </Section>
                 <Section>
-                    <span className={'text-gray'}>Species:</span>
-                    {species}
+                    <SectionInfo caption={'Species'} info={species}/>
                 </Section>
                 <Section>
-                    <span className={'text-gray'}>Gender:</span>
-                    {gender}
+                    <SectionInfo caption={'Gender'} info={gender}/>
                 </Section>
                 <Section>
                     #ID: {id}
