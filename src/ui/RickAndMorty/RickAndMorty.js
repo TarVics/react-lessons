@@ -20,7 +20,7 @@ function RickAndMorty() {
 
     return (
         <>
-            <h1 style={{'text-align': 'center'}}>Rick and Morty</h1>
+            <h1 style={{textAlign: 'center'}}>Rick and Morty</h1>
             <div className={'RickAndMorty'}>
                 {users.map((info, key) => (<Character key={key} info={info}/>))}
             </div>

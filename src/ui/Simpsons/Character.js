@@ -1,10 +1,10 @@
+import LeftImage from "./LeftImage";
+
 function Character (props) {
     const { name, surname, age, info, photo } = props.info;
     return (
         <div className={'character'}>
-            <div className={'character-left'}>
-                <img className={'character-photo'} src={photo} alt = {name + ' ' + surname} />
-            </div>
+            <LeftImage src={photo} alt={name + ' ' + surname} />
             <div className={'character-right'}>
                 <h2 className={'character-name'}>{name} {surname}</h2>
                 <h3 className={'character-age'}>({age} years old)</h3>
