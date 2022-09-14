@@ -1,0 +1,92 @@
+.RickAndMorty {
+    margin: 10px;
+    display: flex;
+    -moz-box-pack: center;
+    justify-content: center;
+    -moz-box-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1920px;
+    border: 1px dotted black;
+}
+
+.RickAndMorty .Character {
+    width: 600px;
+    height: 220px;
+    display: flex;
+    overflow: hidden;
+    background: rgb(60, 62, 68) none repeat scroll 0 0;
+    border-radius: 0.5rem;
+    margin: 0.75rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 6px -1px, rgba(0, 0, 0, 0.06) 0 2px 4px -1px;
+}
+.RickAndMorty .ImgWrapper {
+    flex: 2 1 0;
+    width: 100%;
+}
+.RickAndMorty .ContentWrapper {
+    flex: 3 1 0;
+    position: relative;
+    padding: 0.75rem;
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+}
+
+.RickAndMorty .section:first-child {
+    -moz-box-pack: start;
+    justify-content: flex-start;
+}
+
+.RickAndMorty .section {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    -moz-box-pack: center;
+    justify-content: center;
+}
+
+.RickAndMorty .status {
+    display: flex;
+    -moz-box-align: center;
+    align-items: center;
+    text-transform: capitalize;
+}
+
+.RickAndMorty span {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.RickAndMorty span, .RickAndMorty h2 {
+    margin: 0;
+    padding: 0;
+}
+
+.RickAndMorty .status__icon__red {
+    height: 0.5rem;
+    width: 0.5rem;
+    margin-right: 0.375rem;
+    background: rgb(214, 61, 46) none repeat scroll 0 0;
+    border-radius: 50%;
+}
+
+.RickAndMorty .status__icon__green {
+    height: 0.5rem;
+    width: 0.5rem;
+    margin-right: 0.375rem;
+    background: rgb(85, 204, 68) none repeat scroll 0 0;
+    border-radius: 50%;
+}
+
+.RickAndMorty .status__icon__gray {
+    height: 0.5rem;
+    width: 0.5rem;
+    margin-right: 0.375rem;
+    background: rgb(158, 158, 158) none repeat scroll 0 0;
+    border-radius: 50%;
+}
+
+.RickAndMorty .text-gray {
+    color: rgb(158, 158, 158);
+}

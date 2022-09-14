@@ -1,12 +1,12 @@
 import './App.css';
-import Simpsons from "./ui/Simpsons/Simpsons";
-import Users from "./ui/Users/Users";
+import Simpsons from "./ui/Simpsons";
+import RickAndMorty from "./ui/RickAndMorty";
 
 function App() {
   return (
     <div className="App">
       <Simpsons/>
-      <Users/>
+      <RickAndMorty/>
     </div>
   );
 }

@@ -1,48 +1,51 @@
-.characters {
-    width: 90%;
-    min-width: 400px;
-    margin: 20px auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    /*border: 1px dotted black;*/
-    font-family: "Droid Serif", sans-serif;
-    font-size: 12px;
-}
-
-.character {
-    /*width: calc(50% - 25px);*/
-    width: 500px;
+.Simpsons {
+    max-width: 1920px;
     margin: 10px;
-    border: 1px solid gray;
-    box-shadow: 0 0 5px rgba(26, 9, 9, 0.4);
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px dotted black;
 }
 
-.character-name {
+.Simpsons .character {
+    width: 600px;
+    display: flex;
+    overflow: hidden;
+    background: rgba(238, 241, 190, 0.78) none repeat scroll 0 0;
+    border-radius: 0.5rem;
+    margin: 0.75rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 6px -1px, rgba(0, 0, 0, 0.06) 0 2px 4px -1px;
+}
+
+.Simpsons .character-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Simpsons .character-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.Simpsons .character-name {
     text-align: center;
 }
 
-.character-age {
+.Simpsons .character-age {
     text-align: center;
     font-style: italic;
 }
 
-.character-info {
+.Simpsons .character-info {
     padding: 30px;
     box-sizing: border-box;
     text-align: justify;
     text-indent: 1.5rem;
 }
 
-.character-photo {
+.Simpsons .character-photo {
     display: block;
     width: 150px;
     margin: 20px;
-}
-
-.character-left {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
