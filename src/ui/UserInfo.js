@@ -1,4 +1,3 @@
-
 function UserInfo({ user, selected, onActivate }) {
     return (
         <div className={'layout-row layout-value' + (selected ? ' layout-selected' : '')  } >

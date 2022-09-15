@@ -1,4 +1,3 @@
-
 function UserPost({post}) {
     return (
         <div className="layout-row layout-value">
