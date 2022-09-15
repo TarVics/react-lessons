@@ -1,4 +1,4 @@
-function UserCard({header, children}) {
+function DataCard({header, children}) {
     return (
         <div className="layout-card">
             <div className="layout-header">{header}</div>
@@ -9,4 +9,4 @@ function UserCard({header, children}) {
     );
 }
 
-export default UserCard;
+export default DataCard;
