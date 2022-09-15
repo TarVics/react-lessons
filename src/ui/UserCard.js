@@ -1,4 +1,3 @@
-
 function UserCard({caption, children}) {
     return (
         <div className="layout-card">
