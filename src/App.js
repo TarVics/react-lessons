@@ -1,9 +1,11 @@
 import './App.css';
+import Users from "./ui/Users";
 
 function App() {
   return (
-    <div className="App">
-    </div>
+      <div className="App layout columns-2">
+        <Users/>
+      </div>
   );
 }
 
