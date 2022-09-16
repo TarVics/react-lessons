@@ -90,7 +90,7 @@
     box-sizing: border-box;
     border: 1px solid gray;
     box-shadow: 3px 3px 3px lightgray;
-    background-image: linear-gradient(to right, #f3f9ff, #f7faff, #fafcff, #fdfdff, #ffffff);
+    background-image: linear-gradient(to right, #f3fcff, #f7faff, #fafcff, #fdfdff, #ffffff);
 }
 
 /* Область заголовку віджетів */
@@ -100,7 +100,8 @@
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
-    background-image: linear-gradient(to bottom, #6495ed, #6e9aea, #78a0e7, #82a5e3, #8caae0);
+    /*background-image: linear-gradient(to bottom, #1f566d, #315f75, #4e7a85, #588896, #8caae0);*/
+    background: #2e7696;
     color: white;
     box-shadow: 3px 3px 3px lightgray;
 }
