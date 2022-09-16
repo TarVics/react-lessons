@@ -2,17 +2,11 @@ import React from 'react';
 
 import './NavBar.css';
 
-import PropTypes from 'prop-types';
-
-NavBarLink.propTypes = {
-    onSelect: PropTypes.func
-};
-
 function NavBarLink({selected, onSelect, children}) {
     return (
-        <a href="#" onClick={onSelect} className={selected ? 'selected' : ''}>
+        <li onClick={onSelect} className={selected ? 'selected' : ''}>
             {children}
-        </a>
+        </li>
     )
 }
 

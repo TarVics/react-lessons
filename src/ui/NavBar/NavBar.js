@@ -1,16 +1,11 @@
-import React, {Children, useState} from 'react';
-// import PropTypes from 'prop-types';
+import React, {Children, useEffect, useState} from 'react';
 
 import './NavBar.css';
 import NavBarLink from "./NavBarLink";
 
-// NavBar.propTypes = {
-//     children: PropTypes.arrayOf(PropTypes.elementType).isRequired,
-//     onSelect: PropTypes.func
-// };
-
-function NavBar({children, onSelect}) {
+function NavBar({children, selected:rootSelected, onSelect}) {
     const [selected, setSelected] = useState(() => {
+        if(rootSelected) return rootSelected;
         let res = null;
         Children.forEach(children, child => {
             if (child.type === NavBarLink && child.props.selected) {
@@ -19,6 +14,10 @@ function NavBar({children, onSelect}) {
         })
         return res;
     });
+
+    useEffect(() => {
+        if(typeof onSelect === 'function') onSelect(selected)
+    }, [selected, onSelect]);
 
     return (
         <div className="NavBar">
