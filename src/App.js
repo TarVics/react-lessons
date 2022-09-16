@@ -7,7 +7,6 @@ import SpaceXLaunches from "./ui/SpaceXLaunches";
 
 function App() {
     const [pageId, setPageId] = useState('1');
-
     return (
         <div className="App">
             <NavBar onSelect={id => setPageId(id)} selected={pageId}>
