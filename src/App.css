@@ -1,4 +1,9 @@
 .App {
+
+}
+
+.cursor-progress {
+    cursor: progress;
 }
 
 /* Область розміщення віджетів */
@@ -21,7 +26,8 @@
 
 /* По замовчуванню, ширина віджета 50% по центру */
 .layout-card {
-    width: 50%;
+    /*width: 50%;*/
+    min-width: 256px;
     min-height: 285px;
     margin: 0 auto;
 }

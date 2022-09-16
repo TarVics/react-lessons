@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import {getUsers} from "../ds/jsonplaceholder.fetch";
 import DataCard from "./DataCard";
@@ -16,15 +16,18 @@ function Users() {
 
     return (
         <>
-            <DataCard header="Users">
-                {users.map(val => (
-                    <div className={'layout-row layout-value' + (val === user ? ' layout-selected' : '')} key={val.id} >
-                        {val.id}. {val.name}
-                        <button className="layout-button" onClick={() => setUser(val)}>info ></button>
-                    </div>
-                ))}
-            </DataCard>
-            {user && <User user={user}/>}
+            <h1 style={{textAlign:'center'}}>User Information</h1>
+            <div className="layout columns-2">
+                <DataCard header="Users">
+                    {users.map(val => (
+                        <div className={'layout-row layout-value' + (val === user ? ' layout-selected' : '')} key={val.id} >
+                            {val.id}. {val.name}
+                            <button className="layout-button" onClick={() => setUser(val)}>info ></button>
+                        </div>
+                    ))}
+                </DataCard>
+                {user && <User user={user}/>}
+            </div>
         </>
     );
 }
