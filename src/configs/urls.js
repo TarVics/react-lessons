@@ -4,7 +4,7 @@ const spacex = {
         timeout: 10000
     },
     uri: {
-        launches: '/launches?filter=mission_name,launch_year,links(mission_patch_small)&start=2000-01-01&end=2019-12-31'
+        launches: '/launches?filter=mission_name,launch_year,links(mission_patch_small)&start=2000-01-01&end=2019-12-31&sort=launch_year&order=desc'
     }
 }
 
