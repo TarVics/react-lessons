@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from "react";
 
-import {getUsers} from "../ds/jsonplaceholder.fetch";
-import DataCard from "./DataCard";
-import User from "./User";
+import {DataCard, User} from "..";
+import {userService} from "../../services";
 
 function Users() {
     const [user, setUser] = useState(null);
@@ -10,7 +9,7 @@ function Users() {
 
     useEffect(
         () => {
-            getUsers().then(data => setUsers(data));
+            userService.getAll().then(data => setUsers(data));
         }, []
     );
 
@@ -32,6 +31,4 @@ function Users() {
     );
 }
 
-
-
-export default Users;
+export { Users }

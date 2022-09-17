@@ -1,5 +1,4 @@
-import DataCard from "./DataCard";
-import DataRow from "./DataRow";
+import {DataCard, DataRow} from "..";
 
 function User({user}) {
     return (
@@ -23,4 +22,4 @@ function User({user}) {
     );
 }
 
-export default User;
+export { User }

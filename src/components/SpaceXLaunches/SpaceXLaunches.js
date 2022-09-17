@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
-import {getLaunches} from "../ds/spacexdata.axios";
-import DataCard from "./DataCard";
+import {DataCard} from "..";
+import {spacexService} from "../../services";
 
 function SpaceXLaunches() {
     const [launches, setLaunches] = useState([]);
@@ -9,7 +9,7 @@ function SpaceXLaunches() {
     useEffect(
         () => {
             document.body.classList.add('cursor-progress');
-            getLaunches()
+            spacexService.getLaunches()
                 .then(res => setLaunches(res.data))
                 .finally(() => document.body.classList.remove('cursor-progress'));
         }, []
@@ -18,6 +18,7 @@ function SpaceXLaunches() {
         <>
             <h1 style={{textAlign:'center'}}>SpaceX Launches</h1>
             <div className="layout">
+                {!launches.length && <h2>Loading data...</h2>}
                 {launches.map((launch, index) => (
                     <DataCard header={`${launch.mission_name} (${launch.launch_year})`} key={index}>
                         <img src={launch.links.mission_patch_small} alt={`${launch.mission_name} (${launch.launch_year})`}/>
@@ -28,4 +29,4 @@ function SpaceXLaunches() {
     );
 }
 
-export default SpaceXLaunches;
+export { SpaceXLaunches }

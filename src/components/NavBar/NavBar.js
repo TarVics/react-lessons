@@ -1,7 +1,7 @@
 import React, {Children, useEffect, useState} from 'react';
 
 import './NavBar.css';
-import NavBarLink from "./NavBarLink";
+import {NavBarLink} from "./NavBarLink";
 
 function NavBar({children, selected:rootSelected, onSelect}) {
     const [selected, setSelected] = useState(() => {
@@ -31,6 +31,6 @@ function NavBar({children, selected:rootSelected, onSelect}) {
     )
 }
 
-export default NavBar;
+export { NavBar }
 
 

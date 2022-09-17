@@ -1,9 +1,7 @@
 import {useState} from "react";
 
 import './App.css';
-import { NavBar, NavBarLink } from "./ui/NavBar";
-import Users from "./ui/Users";
-import SpaceXLaunches from "./ui/SpaceXLaunches";
+import {NavBar, NavBarLink, SpaceXLaunches, Users} from "./components";
 
 function App() {
     const [pageId, setPageId] = useState('1');

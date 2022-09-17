@@ -10,4 +10,4 @@ function NavBarLink({selected, onSelect, children}) {
     )
 }
 
-export default NavBarLink;
+export { NavBarLink }

@@ -10,4 +10,4 @@ function DataRow({header, caption, children}) {
     )
 }
 
-export default DataRow;
+export { DataRow }

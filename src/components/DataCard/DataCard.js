@@ -9,4 +9,4 @@ function DataCard({header, children}) {
     );
 }
 
-export default DataCard;
+export { DataCard }
