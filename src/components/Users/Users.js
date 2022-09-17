@@ -9,13 +9,14 @@ function Users() {
 
     useEffect(
         () => {
-            userService.getAll().then(data => setUsers(data));
+            userService.getAll().then(res => setUsers(res.data));
         }, []
     );
 
     return (
         <>
             <h1 style={{textAlign:'center'}}>User Information</h1>
+            {!users.length && <h2 style={{textAlign:'center'}}>Loading data...</h2>}
             <div className="layout columns-2">
                 <DataCard header="Users">
                     {users.map(val => (
