@@ -3,9 +3,9 @@ import React, {Children, useEffect, useState} from 'react';
 import './NavBar.css';
 import {NavBarLink} from "./NavBarLink";
 
-function NavBar({children, selected:rootSelected, onSelect}) {
+function NavBar({children, selected: rootSelected, onSelect}) {
     const [selected, setSelected] = useState(() => {
-        if(rootSelected) return rootSelected;
+        if (rootSelected) return rootSelected;
         let res = null;
         Children.forEach(children, child => {
             if (child.type === NavBarLink && child.props.selected) {
@@ -16,7 +16,7 @@ function NavBar({children, selected:rootSelected, onSelect}) {
     });
 
     useEffect(() => {
-        if(typeof onSelect === 'function') onSelect(selected)
+        if (typeof onSelect === 'function') onSelect(selected)
     }, [selected, onSelect]);
 
     return (
@@ -31,6 +31,6 @@ function NavBar({children, selected:rootSelected, onSelect}) {
     )
 }
 
-export { NavBar }
+export {NavBar}
 
 

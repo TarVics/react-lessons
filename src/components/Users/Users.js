@@ -4,7 +4,7 @@ import {DataCard, User} from "..";
 import {userService} from "../../services";
 
 function Users() {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState({});
     const [users, setUsers] = useState([]);
 
     useEffect(
@@ -26,7 +26,7 @@ function Users() {
                         </div>
                     ))}
                 </DataCard>
-                {user && <User user={user}/>}
+                {/*user &&*/ <User user={user}/>}
             </div>
         </>
     );

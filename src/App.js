@@ -7,7 +7,7 @@ function App() {
     const [pageId, setPageId] = useState('1');
     return (
         <div className="App">
-            <NavBar onSelect={id => setPageId(id)} selected={pageId}>
+            <NavBar selected={pageId} onSelect={setPageId}>
                 <NavBarLink key={'1'}>User Information</NavBarLink>
                 <NavBarLink key={'2'}>SpaceX Launches</NavBarLink>
             </NavBar>
