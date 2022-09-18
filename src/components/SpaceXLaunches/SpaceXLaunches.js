@@ -21,7 +21,8 @@ function SpaceXLaunches() {
             <div className="layout">
                 {launches.map((launch, index) => (
                     <DataCard header={`${launch.mission_name} (${launch.launch_year})`} key={index}>
-                        <img src={launch.links.mission_patch_small} alt={`${launch.mission_name} (${launch.launch_year})`}/>
+                        <img src={launch.links.mission_patch_small}
+                             alt={`${launch.mission_name} (${launch.launch_year})`}/>
                     </DataCard>
                 ))}
             </div>
