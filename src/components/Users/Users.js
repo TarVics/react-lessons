@@ -3,8 +3,11 @@ import React, {useEffect, useState} from "react";
 import {DataCard, User} from "..";
 import {userService} from "../../services";
 
-function Users() {
-    const [user, setUser] = useState({});
+function Users({selected, onSelect}) {
+    const [user, setUser] = useState(() => {
+        console.log(selected);
+        return selected || {}
+    });
     const [users, setUsers] = useState([]);
 
     useEffect(
@@ -13,16 +16,20 @@ function Users() {
         }, []
     );
 
+    const selectUser = (user) => {
+        setUser(user);
+        if(typeof onSelect === 'function') onSelect(user)
+    }
+
     return (
         <>
-            <h1 style={{textAlign:'center'}}>User Information</h1>
-            {!users.length && <h2 style={{textAlign:'center'}}>Loading data...</h2>}
+            <h1 style={{textAlign:'center'}}>{users.length ? 'User Information' : 'Loading data...'}</h1>
             <div className="layout columns-2">
                 <DataCard header="Users">
                     {users.map(val => (
-                        <div className={'layout-row layout-value' + (val === user ? ' layout-selected' : '')} key={val.id} >
+                        <div className={'layout-row layout-value' + (val.id === user.id ? ' layout-selected' : '')} key={val.id} >
                             {val.id}. {val.name}
-                            <button className="layout-button" onClick={() => setUser(val)}>info ></button>
+                            <button className="layout-button" onClick={() => selectUser(val)}>info ></button>
                         </div>
                     ))}
                 </DataCard>

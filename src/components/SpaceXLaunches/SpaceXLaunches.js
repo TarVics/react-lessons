@@ -16,8 +16,7 @@ function SpaceXLaunches() {
     )
     return (
         <>
-            <h1 style={{textAlign:'center'}}>SpaceX Launches</h1>
-            {!launches.length && <h2 style={{textAlign:'center'}}>Loading data...</h2>}
+            <h1 style={{textAlign:'center'}}>{launches.length ? 'SpaceX Launches' : 'Loading data...'}</h1>
             <div className="layout">
                 {launches.map((launch, index) => (
                     <DataCard header={`${launch.mission_name} (${launch.launch_year})`} key={index}>
