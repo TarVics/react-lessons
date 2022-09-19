@@ -4,10 +4,7 @@ import {DataCard, User} from "..";
 import {userService} from "../../services";
 
 function Users({selected, onSelect}) {
-    const [user, setUser] = useState(() => {
-        console.log(selected);
-        return selected || {}
-    });
+    const [user, setUser] = useState(selected || {});
     const [users, setUsers] = useState([]);
 
     useEffect(
