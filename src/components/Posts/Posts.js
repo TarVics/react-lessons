@@ -10,7 +10,7 @@ function Posts({selected}) {
     useEffect(
         () => {
             user && userService.getPosts(user.id).then(res => setPosts(res.data));
-        }, []
+        }, [user]
     );
 
     const addPost = (post) => userService.addPost(user.id, post).then(res => setPosts(posts => {
