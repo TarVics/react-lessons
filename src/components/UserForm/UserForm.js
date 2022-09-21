@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
+
+import css from "./UserForm.module.css"
 
 function UserForm({addUser}) {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -10,10 +11,10 @@ function UserForm({addUser}) {
 
     return (
         <>
-            <div className="layout-row" style={{width: '100%'}}>
-                <form onSubmit={handleSubmit(onSubmit)} style={{width: '100%'}}>
-                    <input {...register("name", { required: true })} style={{width: 'calc(100% - 8px)'}}/>
-                    <button style={{width: '100%'}}>ADD</button>
+            <div className="layout-row" >
+                <form className={css.UserForm} onSubmit={handleSubmit(onSubmit)}>
+                    <input className={css.formInput} {...register("name", { required: true })} />
+                    <button className={css.formButton}>ADD</button>
                 </form>
             </div>
             {errors.name && <div className="layout-row">This field is required</div>}
