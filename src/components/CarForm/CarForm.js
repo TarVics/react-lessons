@@ -6,7 +6,7 @@ import {DataCard, DataRow} from "../DataCard";
 import css from "./CarForm.module.css";
 import {carValidator} from "../../validators";
 
-function CarForm({car, onSubit}) {
+function CarForm({car, onSubmit}) {
     const {register, handleSubmit, reset, formState: {errors, isValid}, setValue} = useForm({
         resolver: joiResolver(carValidator),
         mode: 'all'
@@ -21,7 +21,7 @@ function CarForm({car, onSubit}) {
     }, [car, setValue]);
 
     const submitForm = (car) => {
-        if (typeof onSubit === 'function') onSubit(car).then(() => reset());
+        if (typeof onSubmit === 'function') onSubmit(car).then(() => reset());
     }
 
     return (

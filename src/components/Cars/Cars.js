@@ -47,7 +47,6 @@ function Cars() {
                 setTimeout(() => window.location.href = document.location.origin + '/#car' + car.id, 100);
             } else {
                 res = await carsService.create(car);
-
                 res = res.data;
                 setCars(cars => cars.concat(res));
                 setTimeout(() => window.location.href = document.location.origin + '/#car' + res.id, 100);
@@ -61,7 +60,7 @@ function Cars() {
 
     return (
         <DataCard>
-            <CarForm car={current} onSubit={onSubmit}/>
+            <CarForm car={current} onSubmit={onSubmit}/>
             {cars.map(val => <Car key={val.id} car={val} disabled={current && val.id === current.id} onUpdate={onUpdate} onDelete={onDelete}/>)}
         </DataCard>
     )
