@@ -1,6 +1,6 @@
 import './App.css';
-import {Cars} from "./components/Cars";
-import {DataLayout} from "./components/DataCard";
+import {Cars} from "./components";
+import {DataLayout} from "./components";
 
 function App() {
   return (

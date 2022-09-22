@@ -5,10 +5,10 @@ function DataFooter({ children }) {
     return (
         <div className={ css['layout-footer'] }>
             <div className={ css[ 'layout-button' ] }>
-                {children}
+                { children }
             </div>
         </div>
     )
 }
 
-export {DataFooter}
+export { DataFooter }

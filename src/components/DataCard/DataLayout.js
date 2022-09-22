@@ -1,7 +1,7 @@
 import css from './DataCard.module.css';
 
-function DataLayout({width, columns, className, children, ...props}) {
-    const classList = [css['layout']];
+function DataLayout({ width, columns, className, children, ...props }) {
+    const classList = [ css['layout'] ];
     const style = {};
 
     if (className) classList.push(className);
@@ -17,10 +17,10 @@ function DataLayout({width, columns, className, children, ...props}) {
     if (name) classList.push(name);
 
     return (
-        <div style={style} className={classList.join(' ')} {...props}>
-            {children}
+        <div style={ style } className={ classList.join(' ') } { ...props }>
+            { children }
         </div>
     )
 }
 
-export {DataLayout}
+export { DataLayout }

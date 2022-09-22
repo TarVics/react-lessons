@@ -1,6 +1,6 @@
 const owu = {
     config: {
-        baseURL: 'http://owu.linkpc.net/api/v2',
+        baseURL: process.env.REACT_APP_API,
         headers: {
             'Content-type': 'application/json; charset=UTF-8'
         }
