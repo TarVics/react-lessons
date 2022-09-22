@@ -10,7 +10,7 @@ function Cars() {
     const [current, setCurrent] = useState({edit: false, car: null});
 
     useEffect(() => {
-        carsService.getAll().then(setCars);
+       carsService.getAll().then(setCars);
     }, []);
 
     useEffect(() => {
