@@ -58,14 +58,14 @@ function Cars() {
     }
 
     return (
-        <>
+        <DataCard>
             <CarForm car={current.edit && current.car} onSubmit={onSubmit}/>
             {cars.map(val =>
                 <Car key={val.id} car={val}
                      disabled={current.edit && val.id === current.car.id}
                      onUpdate={onUpdate}
                      onDelete={onDelete}/>)}
-        </>
+        </DataCard>
     )
 }
 
