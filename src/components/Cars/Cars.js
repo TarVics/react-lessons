@@ -7,25 +7,29 @@ import {CarForm} from "../CarForm";
 
 function Cars() {
     const [cars, setCars] = useState([]);
-    const [current, setCurrent] = useState(null);
+    const [current, setCurrent] = useState({edit: false, car: null});
 
     useEffect(() => {
-        carsService.getAll().then(res => setCars(res.data));
+        carsService.getAll().then(setCars);
     }, []);
 
+    useEffect(() => {
+        if (current.edit) {
+            document.body.scrollIntoView({behavior: "smooth"});
+        } else if (current.car) {
+            document.getElementById('car' + current.car.id).scrollIntoView({behavior: "smooth"});
+        }
+    }, [current]);
+
     const onUpdate = car => {
-        setCurrent(car);
-        document.location.href = document.location.origin + '#top';
+        setCurrent({edit: true, car});
     }
 
     const onDelete = car => {
         const deleteCar = async (car) => {
-            let res = await carsService.deleteById(car.id);
-            res = res.data;
-            const index = cars.findIndex(value => value.id === car.id);
-            cars.splice(index, 1);
+            const res = await carsService.deleteById(car.id);
+            cars.splice(cars.findIndex(value => value.id === car.id), 1);
             setCars(cars => [...cars]);
-
             return res;
         }
 
@@ -36,22 +40,17 @@ function Cars() {
         const submitCar = async (car) => {
             let res;
 
-            if(current && current.id) {
-                car.id = current.id;
+            if (current.edit) {
+                car.id = current.car.id;
                 res = await carsService.updateById(car.id, car);
-                res = res.data;
-                const index = cars.findIndex(value => value.id === car.id);
-                cars.splice(index, 1, car);
+                cars.splice(cars.findIndex(value => value.id === car.id), 1, car);
                 setCars(cars => [...cars]);
-                setCurrent(null);
-                setTimeout(() => window.location.href = document.location.origin + '/#car' + car.id, 100);
             } else {
                 res = await carsService.create(car);
-                res = res.data;
                 setCars(cars => cars.concat(res));
-                setTimeout(() => window.location.href = document.location.origin + '/#car' + res.id, 100);
             }
 
+            setCurrent({edit: false, car});
             return res;
         }
 
@@ -59,11 +58,15 @@ function Cars() {
     }
 
     return (
-        <DataCard>
-            <CarForm car={current} onSubmit={onSubmit}/>
-            {cars.map(val => <Car key={val.id} car={val} disabled={current && val.id === current.id} onUpdate={onUpdate} onDelete={onDelete}/>)}
-        </DataCard>
+        <>
+            <CarForm car={current.edit && current.car} onSubmit={onSubmit}/>
+            {cars.map(val =>
+                <Car key={val.id} car={val}
+                     disabled={current.edit && val.id === current.car.id}
+                     onUpdate={onUpdate}
+                     onDelete={onDelete}/>)}
+        </>
     )
 }
 
-export { Cars }
+export {Cars}

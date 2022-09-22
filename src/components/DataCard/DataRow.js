@@ -1,10 +1,12 @@
-function DataRow({header, caption, children}) {
+import css from './DataCard.module.css';
+
+function DataRow({ header, caption, children }) {
     return (
         <>
-            {header && <div className="layout-header">{header}</div>}
-            <div className="layout-row">
-                {caption && <div className="layout-caption">{caption}</div>}
-                <div className="layout-value">{children}</div>
+            {header && <div className={ css["layout-header"] }>{header}</div>}
+            <div className={ css["layout-row"] }>
+                {caption && <div className={ css["layout-caption"] }>{caption}</div>}
+                <div className={ css["layout-value"] }>{children}</div>
             </div>
         </>
     )

@@ -1,12 +1,13 @@
 import './App.css';
 import {Cars} from "./components/Cars";
+import {DataLayout} from "./components/DataCard";
 
 function App() {
   return (
-    <div className="App layout width-1 columns-1">
-      <Cars/>
-    </div>
-  );
+    <DataLayout className="App" width="1" columns="1">
+        <Cars/>
+    </DataLayout>
+  )
 }
 
 export default App;
