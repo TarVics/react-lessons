@@ -15,12 +15,12 @@ function AlbumsPage() {
             const dUsers = users || await jsonPlaceholderService.getUsers();
             const dAlbums = await jsonPlaceholderService.getAlbums();
 
-            setAlbums(value => dAlbums.map(item => ({...item, user: dUsers[item.user.id]})));
+            setAlbums(() => dAlbums.map(item => ({...item, user: dUsers[item.user.id]})));
         }
 
         load();
-
-    }, []);
+// eslint-disable-next-line
+    },[]);
 
     return (
         <DataLayout width="4" columns="2" padding={'40px 0'}>
