@@ -22,9 +22,10 @@ function NavBar({children, selected: rootSelected, onSelect}) {
     return (
         <div className={css.NavBar}>
             {Children.map(children, child => {
+                // console.log(selected, child.key);
                 return React.cloneElement(child, {
                     /* comments/6 === comments */
-                    selected: selected.match('^' + child.key + '(/[^$]*)?$'),
+                    selected: selected && selected.match('^' + child.key + '(/[^$]*)?$'),
                     onSelect: () => setSelected(child.key)
                 })
             })}

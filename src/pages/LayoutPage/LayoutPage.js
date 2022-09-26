@@ -7,7 +7,7 @@ import {NavBar, NavBarLink} from "../../components";
 function LayoutPage() {
     const navigate = useNavigate();
     const location = useLocation();
-    const [page, setPage] = useState(location.pathname.substring(1));
+    const [page, setPage] = useState(location.pathname.substring(1) || 'home');
     const [users, setUsers] = useState(null);
 
     useEffect(() => {

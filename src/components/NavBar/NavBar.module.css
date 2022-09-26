@@ -23,5 +23,6 @@
 
 .NavBar li.selected {
     background-color: #669FAFFC;
+    cursor: default;
     color: black;
 }
