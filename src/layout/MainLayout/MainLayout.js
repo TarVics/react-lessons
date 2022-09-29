@@ -4,7 +4,7 @@ import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import {jsonPlaceholderService} from "../../services";
 import {NavBar, NavBarLink} from "../../components";
 
-function LayoutPage() {
+function MainLayout() {
     const navigate = useNavigate();
     const location = useLocation();
     const [page, setPage] = useState(location.pathname.substring(1) || 'home');
@@ -32,4 +32,4 @@ function LayoutPage() {
     );
 }
 
-export {LayoutPage}
+export {MainLayout}

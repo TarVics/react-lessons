@@ -101,16 +101,13 @@
 
 /* Робоча область віджетів */
 .layout-body {
+    height: 100%;
     padding: 5px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     border: 1px solid gray;
     background-image: linear-gradient(to right, #f3fcff, #f7faff, #fafcff, #fdfdff, #ffffff);
-}
-
-.layout-body {
-    height: 100%;
 }
 
 /* Висота робочої області із врахуванням висоти заголовку */

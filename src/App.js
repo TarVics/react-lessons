@@ -2,13 +2,14 @@ import React from "react";
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 
 import './App.css';
-import {AlbumsPage, CommentsPage, HomePage, LayoutPage, NoPage, PostPage, TodosPage} from "./pages";
+import {MainLayout} from "./layout";
+import {AlbumsPage, CommentsPage, HomePage, NoPage, PostPage, TodosPage} from "./pages";
 
 function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path={'/'} element={<LayoutPage/>}>
+                <Route path={'/'} element={<MainLayout/>}>
                     <Route index element={<Navigate to={'home'}/>}/>
                     <Route path={'home'} element={<HomePage/>}/>
                     <Route path={'todos'} element={<TodosPage/>}/>
