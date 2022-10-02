@@ -1,7 +1,7 @@
 import React from 'react';
 
 import css from "./PetsList.module.css";
-import {DataCard, DataRow} from "../DataCard";
+import {DataCard} from "../DataCard";
 
 const PetsList = ({items, onDelete}) => {
 
@@ -12,7 +12,7 @@ const PetsList = ({items, onDelete}) => {
     return (
         <DataCard>
             {items && items.map((item, index) =>
-                <div  className={css.PetsList} key={index}>
+                <div className={css.PetsList} key={index}>
                     {item}
                     <button onClick={() => onClick(item)}>Delete</button>
                 </div>
