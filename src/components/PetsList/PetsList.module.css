@@ -1,0 +1,9 @@
+.PetsList {
+    text-align: right;
+    line-height: 28px;
+}
+
+.PetsList > button {
+    width: 50px;
+    margin-left: 5px;
+}

@@ -1,0 +1,12 @@
+.PetsForm {
+    text-align: right;
+}
+
+input {
+    margin-left: 5px;
+}
+
+[type="submit"] {
+    width: 50px;
+}
+
