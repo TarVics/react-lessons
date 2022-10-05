@@ -1,0 +1,28 @@
+.NavBar {
+    overflow: hidden;
+    background-color: #1C546BFC;
+    font-family: Calibri, serif;
+    font-size: 1.2rem;
+    display: flex;
+}
+
+.NavBar li {
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    box-sizing: border-box;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.NavBar li:hover {
+    background-color: #9EEAFFFC;
+    color: black;
+}
+
+.NavBar li.selected {
+    background-color: #669FAFFC;
+    cursor: default;
+    color: black;
+}
