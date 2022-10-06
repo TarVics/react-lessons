@@ -13,7 +13,8 @@ function CommentsPage() {
     useEffect(() => {
         usersService.getComments()
             .then(res => dispatch({type: SET_COMMENTS, payload: res}));
-    }, [dispatch]);
+// eslint-disable-next-line
+    }, []);
 
     return (
         <DataLayout width="95%" columns="2" padding={'40px 0'}>

@@ -11,6 +11,7 @@ function UsersPage() {
 
     useEffect(() => {
         usersService.getUsers().then(res => dispatch({type: SET_USERS, payload: res}));
+// eslint-disable-next-line
     },[]);
 
     return (

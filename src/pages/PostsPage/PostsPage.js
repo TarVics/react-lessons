@@ -14,7 +14,8 @@ function PostsPage() {
         usersService.getPosts().then(res => {
             dispatch({type: SET_POSTS, payload: res})
         });
-    }, [dispatch]);
+// eslint-disable-next-line
+    }, []);
 
     return (
         <DataLayout width="95%" columns="2" padding={'40px 0'}>

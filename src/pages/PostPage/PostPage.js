@@ -28,9 +28,9 @@ function PostPage() {
             }
 
             if(post) {
-                dispatch({type: GET_USER, payload: post.userId});
+                dispatch({type: GET_USER, payload: post['userId']});
                 if (!user) {
-                    const dUser = await usersService.getUsers(post.userId);
+                    const dUser = await usersService.getUsers(post['userId']);
                     dispatch({type: SET_USER, payload: dUser});
                 }
             }
@@ -38,7 +38,7 @@ function PostPage() {
 
         id && load();
 // eslint-disable-next-line
-    }, [id, comments, post, user, dispatch]);
+    }, [id, comments, post]);
 
     return (
         <>
