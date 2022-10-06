@@ -1,1 +1,1 @@
-export * from "./jsonplaceholder.service";
+export * from "./users.service";

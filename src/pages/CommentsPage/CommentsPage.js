@@ -2,16 +2,16 @@ import React, {useEffect} from 'react';
 import {Outlet} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
-import {jsonPlaceholderService} from "../../services";
+import {usersService} from "../../services";
 import {CommentsBrief, DataCard, DataLayout} from "../../components";
-import {SET_COMMENTS} from "../..";
+import {SET_COMMENTS} from "../../redux";
 
 function CommentsPage() {
     const comments = useSelector(state => state.commentsReducer.comments);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        jsonPlaceholderService.getComments()
+        usersService.getComments()
             .then(res => dispatch({type: SET_COMMENTS, payload: res}));
     }, [dispatch]);
 

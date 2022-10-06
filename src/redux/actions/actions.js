@@ -1,0 +1,9 @@
+export const GET_USER = "GET_USER";
+export const SET_USER = "SET_USER";
+export const SET_USERS = "SET_USERS";
+export const GET_POST = "GET_POST";
+export const SET_POST = "SET_POST";
+export const SET_POSTS = "SET_POSTS";
+export const GET_POST_COMMENTS = "GET_POST_COMMENTS";
+export const SET_POST_COMMENTS = "SET_POST_COMMENTS";
+export const SET_COMMENTS = "SET_COMMENTS";

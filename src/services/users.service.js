@@ -1,7 +1,7 @@
 import {axiosService} from "./axios.service";
 import {jsonplaceholder} from "../configs";
 
-const jsonPlaceholderService = {
+const usersService = {
 
     getAlbums: () => axiosService.get(jsonplaceholder.uri.albums())
         .catch(console.error)
@@ -108,4 +108,4 @@ const jsonPlaceholderService = {
         .then(({data}) => id ? data : data.reduce((acc, val) => (acc[val.id] = val) && acc, {})),
 }
 
-export {jsonPlaceholderService}
+export {usersService}

@@ -2,16 +2,16 @@ import React, {useEffect} from 'react';
 import {Outlet} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
-import {jsonPlaceholderService} from "../../services";
+import {usersService} from "../../services";
 import {DataCard, DataLayout, Post} from "../../components";
-import {SET_POSTS} from "../..";
+import {SET_POSTS} from "../../redux";
 
 function PostsPage() {
     const posts = useSelector(state => state.postsReducer.posts);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        jsonPlaceholderService.getPosts().then(res => {
+        usersService.getPosts().then(res => {
             dispatch({type: SET_POSTS, payload: res})
         });
     }, [dispatch]);

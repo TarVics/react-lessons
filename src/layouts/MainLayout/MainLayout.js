@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
 
-import {jsonPlaceholderService} from "../../services";
+import {usersService} from "../../services";
 import {NavBar, NavBarLink} from "../../components";
 
 function MainLayout() {
@@ -11,7 +11,7 @@ function MainLayout() {
     const [users, setUsers] = useState(null);
 
     useEffect(() => {
-        jsonPlaceholderService.getUsers().then(setUsers);
+        usersService.getUsers().then(setUsers);
     },[]);
 
     useEffect(() => {
