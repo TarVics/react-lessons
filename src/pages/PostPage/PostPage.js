@@ -15,25 +15,22 @@ function PostPage() {
 
     useEffect(() => {
         const load = async () => {
+            let dComments, dPost, dUser;
+
             dispatch({type: GET_POST_COMMENTS, payload: id});
-            if(!comments) {
-                const dComments = await usersService.getCommentsByPostId(id);
-                dispatch({type: SET_POST_COMMENTS, payload: dComments});
-            }
+            if(!comments) dComments = await usersService.getCommentsByPostId(id);
 
             dispatch({type: GET_POST, payload: id});
-            if(!post) {
-                const dPost = await usersService.getPosts(id);
-                dispatch({type: SET_POST, payload: dPost});
-            }
+            if(!post) dPost = await usersService.getPosts(id);
 
             if(post) {
                 dispatch({type: GET_USER, payload: post['userId']});
-                if (!user) {
-                    const dUser = await usersService.getUsers(post['userId']);
-                    dispatch({type: SET_USER, payload: dUser});
-                }
+                if (!user) dUser = await usersService.getUsers(post['userId']);
             }
+
+            dComments && dispatch({type: SET_POST_COMMENTS, payload: dComments});
+            dPost && dispatch({type: SET_POST, payload: dPost});
+            dUser && dispatch({type: SET_USER, payload: dUser});
         }
 
         id && load();
