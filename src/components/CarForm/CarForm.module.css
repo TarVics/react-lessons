@@ -1,0 +1,10 @@
+.editButton {
+    margin-left: 5px;
+    /*width: 80px;*/
+}
+
+.editValue {
+    width: calc(100% - 10px);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
