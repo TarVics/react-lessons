@@ -3,7 +3,7 @@ import React, {Children, useEffect, useState} from 'react';
 import {NavBarLink} from "./NavBarLink";
 import css from './NavBar.module.css';
 
-function NavBar({children, selected: rootSelected, onSelect}) {
+function NavBar({children, selected: rootSelected, onSelect, className}) {
     const [selected, setSelected] = useState(() => {
         if (rootSelected) return rootSelected;
         let res = null;
@@ -19,17 +19,39 @@ function NavBar({children, selected: rootSelected, onSelect}) {
         if (typeof onSelect === 'function') onSelect(selected)
     }, [selected, onSelect]);
 
+    let startIndex = -1;
+    let endIndex = -1;
+
     return (
-        <div className={css.NavBar}>
-            {Children.map(children, child => {
-                // console.log(selected, child.key);
-                return React.cloneElement(child, {
-                    /* comments/6 === comments */
-                    selected: selected && selected.match('^' + child.key + '(/[^$]*)?$'),
-                    onSelect: () => setSelected(child.key)
+        <nav className={css.NavBar + (className ? ' ' + className : '')}>
+            {
+                Children.map(children, (child, index) => {
+                    if (child.type === NavBarLink) {
+                        if (startIndex === -1) startIndex = index;
+                        endIndex = index;
+                        return null;
+                    }
+                    return ~startIndex ? null : child;
                 })
-            })}
-        </div>
+            }
+            <ul>
+                {
+                    Children.map(children, child => {
+                        return (child.type === NavBarLink) ?
+                            React.cloneElement(child, {
+                                /* comments/6 === comments */
+                                selected: selected && selected.match('^' + child.key + '(/[^$]*)?$'),
+                                onSelect: () => setSelected(child.key)
+                            }) : null;
+                    })
+                }
+            </ul>
+            {
+                Children.map(children, (child, index) =>
+                    (child.type === NavBarLink || index <= endIndex) ? null : child
+                )
+            }
+        </nav>
     )
 }
 

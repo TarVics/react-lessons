@@ -12,7 +12,7 @@ function MainLayout() {
 
     useEffect(() => {
         usersService.getUsers().then(setUsers);
-    },[]);
+    }, []);
 
     useEffect(() => {
         navigate(page, {state: users});
@@ -20,14 +20,14 @@ function MainLayout() {
     }, [page]);
 
     return (
-        <nav>
+        <>
             <NavBar selected={page} onSelect={setPage}>
                 <NavBarLink key={'users'}>users</NavBarLink>
                 <NavBarLink key={'posts'}>posts</NavBarLink>
                 <NavBarLink key={'comments'}>comments</NavBarLink>
             </NavBar>
             <Outlet/>
-        </nav>
+        </>
     );
 }
 
