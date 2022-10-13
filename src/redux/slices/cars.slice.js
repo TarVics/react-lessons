@@ -18,7 +18,7 @@ const getAll = createAsyncThunk(
             const { data } = await carsService.getAll(page);
             return data;
         } catch (e) {
-            return rejectWithValue(e.toString());
+            return rejectWithValue(e.response?.data || e.toString());
         }
     }
 );
@@ -32,7 +32,7 @@ const create = createAsyncThunk(
             dispatch(setCurrent({car: data}));
             return data;
         } catch (e) {
-            rejectedWithValue(e.toString());
+            rejectedWithValue(e.response?.data || e.toString());
         }
     }
 );
@@ -49,7 +49,7 @@ const attachPhoto = createAsyncThunk(
             dispatch(setCurrent({obj}));
             return data;
         } catch (e) {
-            rejectedWithValue(e.toString());
+            rejectedWithValue(e.response?.data || e.toString());
         }
     }
 );
@@ -81,12 +81,7 @@ const carsSlice = createSlice({
     // }
     extraReducers: builder =>
         builder
-            // .addCase(getAll.fulfilled, (state, action) => {
-            //     state.cars = action.payload
-            //     state.loading = false
-            // })
-
-            .addCase(getAll.pending, (state, action) => {
+            .addCase(getAll.pending, (state) => {
                 state.error = null;
                 state.loading = true;
             })
@@ -103,19 +98,32 @@ const carsSlice = createSlice({
                 state.current = initialState.current;
             })
 
-            .addCase(create.pending, (state, action) => {
-                state.error = null;
-            })
-            .addCase(create.rejected, (state, action) => {
-                state.error = action.payload;
+            // .addCase(create.pending, (state, action) => {
+            //     state.error = null;
+            // })
+            // .addCase(create.rejected, (state, action) => {
+            //     state.error = action.payload;
+            // })
+            //
+            // .addCase(attachPhoto.pending, (state, action) => {
+            //     state.error = null;
+            // })
+            // .addCase(attachPhoto.rejected, (state, action) => {
+            //     state.error = action.payload;
+            // })
+
+            .addDefaultCase((state, action) => {
+                const [pathElement] = action.type.split('/').splice(-1);
+                // console.log(action.type);
+                // carsSlice/getAll/rejected
+                // console.log(pathElement);
+                if (pathElement === 'rejected') {
+                    state.error = action.payload;
+                } else if (pathElement === 'pending'){
+                    state.error = null;
+                }
             })
 
-            .addCase(attachPhoto.pending, (state, action) => {
-                state.error = null;
-            })
-            .addCase(attachPhoto.rejected, (state, action) => {
-                state.error = action.payload;
-            })
 });
 
 const {reducer: carsReducer, actions: {setCurrent, appendItem, updateItem}} = carsSlice;
