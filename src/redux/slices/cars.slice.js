@@ -18,7 +18,7 @@ const getAll = createAsyncThunk(
             const { data } = await carsService.getAll();
             return data.sort((a, b) => b.id - a.id);
         } catch (e) {
-            return rejectWithValue(e);
+            return rejectWithValue(e.response?.data || e.toString());
         }
     }
 );
@@ -31,7 +31,7 @@ const getById = createAsyncThunk(
             dispatch(setCurrent({car: data}));
             return data;
         } catch (e) {
-            rejectedWithValue(e);
+            rejectedWithValue(e.response?.data || e.toString());
         }
     }
 );
@@ -45,21 +45,21 @@ const create = createAsyncThunk(
             dispatch(setCurrent({car: data}));
             return data;
         } catch (e) {
-            rejectedWithValue(e);
+            rejectedWithValue(e.response?.data || e.toString());
         }
     }
 );
 
 const updateById = createAsyncThunk(
     'carsSlice/updateById',
-    async (car, {rejectedWithValue, dispatch, getState}) => {
+    async (car, {rejectedWithValue, dispatch}) => {
         try {
-            const { data } = await carsService.updateById(car.id, car);
+            const { data } = await carsService.updateById(car?.id, car);
             dispatch(updateItem(data));
             dispatch(setCurrent({car: data}));
             return data;
         } catch (e) {
-            rejectedWithValue(e);
+            rejectedWithValue(e.response?.data || e.toString());
         }
     }
 );
@@ -73,7 +73,7 @@ const deleteById = createAsyncThunk(
             dispatch(setCurrent());
             return id;
         } catch (e) {
-            rejectedWithValue(e);
+            rejectedWithValue(e.response?.data || e.toString());
         }
     }
 );
@@ -111,12 +111,8 @@ const carsSlice = createSlice({
     // }
     extraReducers: builder =>
         builder
-            // .addCase(getAll.fulfilled, (state, action) => {
-            //     state.cars = action.payload
-            //     state.loading = false
-            // })
-
-            .addCase(getAll.pending, (state, action) => {
+            .addCase(getAll.pending, (state) => {
+                state.error = null;
                 state.loading = true;
             })
             .addCase(getAll.rejected, (state, action) => {
@@ -125,26 +121,37 @@ const carsSlice = createSlice({
             })
             .addCase(getAll.fulfilled, (state, action) => {
                 state.items = action.payload;
-                state.current = initialState.current;
                 state.loading = false;
             })
 
-            .addCase(getById.rejected, (state, action) => {
-                state.current = initialState.current;
-                state.error = action.payload;
+            // .addCase(getById.rejected, (state, action) => {
+            //     state.error = action.payload;
+            // })
+            //
+            // .addCase(create.rejected, (state, action) => {
+            //     state.error = action.payload;
+            // })
+            //
+            // .addCase(updateById.rejected, (state, action) => {
+            //     state.error = action.payload;
+            // })
+            //
+            // .addCase(deleteById.rejected, (state, action) => {
+            //     state.error = action.payload;
+            // })
+
+            .addDefaultCase((state, action) => {
+                const [pathElement] = action.type.split('/').splice(-1);
+                // console.log(action.type);
+                // carsSlice/getAll/rejected
+                // console.log(pathElement);
+                if (pathElement === 'rejected') {
+                    state.error = action.payload;
+                } else if (pathElement === 'pending'){
+                    state.error = null;
+                }
             })
 
-            .addCase(create.rejected, (state, action) => {
-                state.error = action.payload;
-            })
-
-            .addCase(updateById.rejected, (state, action) => {
-                state.error = action.payload;
-            })
-
-            .addCase(deleteById.rejected, (state, action) => {
-                state.error = action.payload;
-            })
 });
 
 const {reducer: carsReducer, actions: {setCurrent, appendItem, updateItem, deleteItemById}} = carsSlice;
